@@ -17,6 +17,7 @@ import java.util.TreeMap;
  */
 public class ReceiptPrintingController {
     private final Map<Integer, Product> products;
+    private final Map<Integer, Receipt> receipts;
     
     private String prettyPrintProducts() {
         StringBuilder allproducts = new StringBuilder();
@@ -25,8 +26,17 @@ public class ReceiptPrintingController {
         }
         return allproducts.toString();
     }
+
+    public Map<Integer, Product> getProducts() {
+        return products;
+    }
+
+    public Map<Integer, Receipt> getReceipts() {
+        return receipts;
+    }
     
     public ReceiptPrintingController(String fileLocation) throws IOException, ClassNotFoundException {
+        this.receipts = new TreeMap();
         this.products = (TreeMap) SerializationUtil.deserialize(fileLocation+"/products.dat");
         System.out.println("*** Available products ***");
         System.out.println(this.prettyPrintProducts());
@@ -38,7 +48,7 @@ public class ReceiptPrintingController {
         receipt.addItemToShoppingList(this.products.get(1), 1);
         receipt.addItemToShoppingList(this.products.get(2), 1);        
         receipt.addItemToShoppingList(this.products.get(3), 1);
-        
+        this.receipts.put(1, receipt);
         System.out.println(receipt.toString());
     }
     
@@ -46,7 +56,7 @@ public class ReceiptPrintingController {
         Receipt receipt = new Receipt(2);
         receipt.addItemToShoppingList(this.products.get(4), 1);
         receipt.addItemToShoppingList(this.products.get(5), 1); 
-        
+        this.receipts.put(2, receipt);
         System.out.println(receipt.toString());
     }
     
@@ -56,7 +66,7 @@ public class ReceiptPrintingController {
         receipt.addItemToShoppingList(this.products.get(7), 1);
         receipt.addItemToShoppingList(this.products.get(8), 1);
         receipt.addItemToShoppingList(this.products.get(9), 1);
-        
+        this.receipts.put(3, receipt);
         System.out.println(receipt.toString());
     }
 }

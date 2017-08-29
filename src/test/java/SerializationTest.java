@@ -16,13 +16,6 @@ import java.util.TreeMap;
  * @author smoczyna
  */
 public class SerializationTest {
-
-//    private Map<Integer, Product> items;
-//    
-//    @Before
-//    public void setUp() throws IOException, ClassNotFoundException {
-//        this.items = this.setUpItems();
-//    }
     
     private static Map<Integer, Product> setUpItems() {
         Map<Integer, Product> items = new TreeMap();
@@ -93,11 +86,6 @@ public class SerializationTest {
         return items;
     }
     
-//    @Test
-//    public void testSerialize() throws IOException {        
-//        SerializationUtil.serialize(setUpItems(), "/home/smoczyna/Public/temp/products.dat");
-//    }
-    
     public static void main(String[] args) {        
         try {
             String fileLocation = null;
@@ -106,10 +94,13 @@ public class SerializationTest {
             else
                 fileLocation = "/home/smoczyna/Public/temp/products.dat";
             
+            /**
+             * Serializing products to file
+             */
             SerializationUtil.serialize(setUpItems(), fileLocation);
 
             /**
-             * Deserializing the object
+             * Deserializing products from file
              */
             Map<Integer, Product> newItems = (TreeMap) SerializationUtil.deserialize(fileLocation);
             System.out.println(newItems.toString());
