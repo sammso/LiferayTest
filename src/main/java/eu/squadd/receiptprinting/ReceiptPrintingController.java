@@ -35,12 +35,18 @@ public class ReceiptPrintingController {
         return receipts;
     }
     
-    public ReceiptPrintingController(String fileLocation) throws IOException, ClassNotFoundException {
-        this.receipts = new TreeMap();
-        this.products = (TreeMap) SerializationUtil.deserialize(fileLocation+"/products.dat");
+    public ReceiptPrintingController(Map<Integer, Product> products) {
+    	this.products = products;
+    	 this.receipts = new TreeMap();
         System.out.println("*** Available products ***");
         System.out.println(this.prettyPrintProducts());
         System.out.println("*** purchases ***");
+    }
+    
+    public ReceiptPrintingController(String fileLocation) throws IOException, ClassNotFoundException {
+       
+    	this((Map<Integer, Product>)SerializationUtil.deserialize(fileLocation+"/products.dat"));
+
     }
     
     public void printFirstReceipt() {
