@@ -19,7 +19,7 @@ import java.util.TreeMap;
  */
 public class SerializationTest {
     
-    private static Map<Integer, Product> setUpItems() {
+    static Map<Integer, Product> setUpItems() {
         Map<Integer, Product> items = new TreeMap();
         Product product = new Product();
         
