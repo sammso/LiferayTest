@@ -1,3 +1,5 @@
+package eu.squadd.receiptprinting;
+
 
 import eu.squadd.receiptprinting.model.Product;
 import eu.squadd.receiptprinting.SerializationUtil;
