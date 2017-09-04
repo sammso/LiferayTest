@@ -5,13 +5,16 @@
  */
 package eu.squadd.receiptprinting;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
 import java.io.IOException;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -34,7 +37,7 @@ public class ReceiptPrintingControllerTest {
     
     @Before
     public void setUp() throws IOException, ClassNotFoundException {
-        this.controller = new ReceiptPrintingController("/home/smoczyna/Public/temp");
+        this.controller = new ReceiptPrintingController(SerializationTest.setUpItems());
     }
     
     @After
