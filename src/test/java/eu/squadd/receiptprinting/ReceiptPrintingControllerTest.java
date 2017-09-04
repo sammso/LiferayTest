@@ -37,7 +37,7 @@ public class ReceiptPrintingControllerTest {
     
     @Before
     public void setUp() throws IOException, ClassNotFoundException {
-        this.controller = new ReceiptPrintingController(SerializationTest.setUpItems());
+        this.controller = new ReceiptPrintingController(Generator.setUpItems());
     }
     
     @After
