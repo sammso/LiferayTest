@@ -20,15 +20,22 @@ public class Runner {
     
     public static void main(String[] args) {
         try {
-        	if (args.length > 0 ) {
+        	if (args.length==1 ) {
         		Map<Integer, Product> products = (Map<Integer, Product>)SerializationUtil.deserialize(args[0]);
         		ReceiptPrintingController controller = new ReceiptPrintingController(products);
 	            controller.printFirstReceipt();
 	            controller.printSecondReceipt();
 	            controller.printThirdReceipt();
+        	}        		
+            else if (args.length == 2 && args[0].equals("--generate")) {
+    			SerializationUtil.serialize(Generator.setUpItems(), args[1]);
             }
         	else {
-        		System.out.println("input file name as paramters required");
+        		System.out.println("Usage:");
+        		System.out.println("Generate input file");
+        		System.out.println(" java -jar ReceiptPrinting.jar --generate <output filename>");
+        		System.out.println("Print out results");
+        		System.out.println(" java -jar ReceiptPrinting.jar <input filename>");
         	}
         } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(Runner.class.getName()).log(Level.SEVERE, null, ex);
