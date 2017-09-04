@@ -19,11 +19,10 @@ import eu.squadd.receiptprinting.model.Product;
 public class Runner {
     
     public static void main(String[] args) {
-        ReceiptPrintingController controller;
         try {
         	if (args.length > 0 ) {
         		Map<Integer, Product> products = (Map<Integer, Product>)SerializationUtil.deserialize(args[0]);
-	            controller = new ReceiptPrintingController(products);
+        		ReceiptPrintingController controller = new ReceiptPrintingController(products);
 	            controller.printFirstReceipt();
 	            controller.printSecondReceipt();
 	            controller.printThirdReceipt();
