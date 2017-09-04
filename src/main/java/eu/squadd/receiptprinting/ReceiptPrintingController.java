@@ -43,12 +43,6 @@ public class ReceiptPrintingController {
         System.out.println("*** purchases ***");
     }
     
-    public ReceiptPrintingController(String fileLocation) throws IOException, ClassNotFoundException {
-       
-    	this((Map<Integer, Product>)SerializationUtil.deserialize(fileLocation+"/products.dat"));
-
-    }
-    
     public void printFirstReceipt() {
         Receipt receipt = new Receipt(1);
         receipt.addItemToShoppingList(this.products.get(1), 1);

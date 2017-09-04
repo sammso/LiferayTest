@@ -6,8 +6,11 @@
 package eu.squadd.receiptprinting;
 
 import java.io.IOException;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import eu.squadd.receiptprinting.model.Product;
 
 /**
  *
@@ -18,7 +21,8 @@ public class Runner {
     public static void main(String[] args) {
         ReceiptPrintingController controller;
         try {
-            controller = new ReceiptPrintingController(args[0]);
+        	Map<Integer, Product> products = (Map<Integer, Product>)SerializationUtil.deserialize(args[0]);
+            controller = new ReceiptPrintingController(products);
             controller.printFirstReceipt();
             controller.printSecondReceipt();
             controller.printThirdReceipt();
